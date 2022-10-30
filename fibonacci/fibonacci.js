@@ -1,25 +1,47 @@
 "use strict";
 
-const number = document.querySelector(".number");
-const fibNum = document.querySelector(".fib-number");
-number.textContent = 12;
-fibNum.textContent = 144;
+const numberEL = document.querySelector(".number");
+const fibNumEl = document.querySelector(".fib-number");
 
-// fib formula
-function fibonacci(x) {
+// fib recursive formula`
+function fibonacciRecursive(x) {
   let counter = 0;
   let f_1 = 1;
   let f_2 = 0;
-  let curNum = 0;
+  let fibNum = 0;
 
   function calcFibonacci(x) {
     counter++;
-    curNum = f_1 + f_2;
+    fibNum = f_1 + f_2;
     f_1 = f_2;
-    f_2 = curNum;
-    if (counter === x) return curNum;
+    f_2 = fibNum;
+    if (counter === x) return fibNum;
     calcFibonacci(x);
   }
-  return calcFibonacci(x);
+  calcFibonacci(x);
+  return fibNum;
 }
-fibonacci(20);
+fibonacciRecursive(12);
+
+// fib loop f]ormula
+
+function fibonacciLoop(x) {
+  let f_1 = 1;
+  let f_2 = 0;
+  let fibNum = 0;
+
+  function calcFibonacci(x) {
+    fibNum = f_1 + f_2;
+    f_1 = f_2;
+    f_2 = fibNum;
+  }
+
+  for (let i = 0; i < x; i++) {
+    calcFibonacci(x);
+  }
+  let y = fibNum;
+  return y;
+}
+
+numberEL.textContent = 12;
+fibNumEl.textContent = fibonacciLoop(12);
