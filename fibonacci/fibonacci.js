@@ -1,6 +1,6 @@
 "use strict";
 
-const numberEL = document.querySelector(".number");
+const numberInput = document.querySelector(".number-input");
 const fibNumEl = document.querySelector(".fib-number");
 
 // fib recursive formula`
@@ -23,7 +23,7 @@ function fibonacciRecursive(x) {
 }
 fibonacciRecursive(12);
 
-// fib loop f]ormula
+// fib loop formula
 
 function fibonacciLoop(x) {
   let f_1 = 1;
@@ -43,5 +43,8 @@ function fibonacciLoop(x) {
   return y;
 }
 
-numberEL.textContent = 12;
-fibNumEl.textContent = fibonacciLoop(12);
+document.querySelector("button").addEventListener("click", (e) => {
+  e.preventDefault();
+  if (numberInput.valueAsNumber < 0) return;
+  fibNumEl.textContent = fibonacciLoop(numberInput.valueAsNumber);
+});
